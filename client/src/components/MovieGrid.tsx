@@ -6,6 +6,7 @@ import { Center, GridItem, SimpleGrid } from "@chakra-ui/react";
 interface Movie {
   title: string;
   backdrop_path: string;
+  vote_average: number;
 }
 
 const MovieGrid = () => {
@@ -33,6 +34,7 @@ const MovieGrid = () => {
             {" "}
             {/* Set padding to 0 */}
             <MovieCard
+              vote_average={movie.vote_average}
               image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
               title={movie.title}
             ></MovieCard>
