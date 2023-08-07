@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import { Center, GridItem, SimpleGrid } from "@chakra-ui/react";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
 interface Movie {
   title: string;
@@ -11,6 +12,8 @@ interface Movie {
 
 const MovieGrid = () => {
   const [data, setData] = useState<Movie[]>([]);
+  const [isLoading, setLoading] = useState(true);
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   useEffect(() => {
     axios
@@ -19,20 +22,25 @@ const MovieGrid = () => {
       )
       .then((res) => {
         setData(res.data["results"]);
+        setLoading(false);
       });
   }, []);
 
   return (
     <Center>
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 6 }}
+        columns={{ sm: 1, md: 3, lg: 4, xl: 6 }}
         spacing={6}
         marginY={300}
       >
+        {isLoading &&
+          skeletons.map((skeleton) => (
+            <GridItem key={skeleton}>
+              <MovieCardSkeleton></MovieCardSkeleton>
+            </GridItem>
+          ))}
         {data?.map((movie) => (
           <GridItem key={movie.title} padding={0}>
-            {" "}
-            {/* Set padding to 0 */}
             <MovieCard
               vote_average={movie.vote_average}
               image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
