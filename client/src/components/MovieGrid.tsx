@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
-import { GridItem, SimpleGrid } from "@chakra-ui/react";
+import { Center, GridItem, SimpleGrid } from "@chakra-ui/react";
 
 interface Movie {
   title: string;
@@ -22,17 +22,24 @@ const MovieGrid = () => {
   }, []);
 
   return (
-    <>
-      <SimpleGrid columns={3} spacing={0}>
+    <Center>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 6 }}
+        spacing={6}
+        marginY={300}
+      >
         {data?.map((movie) => (
           <GridItem key={movie.title} padding={0}>
             {" "}
             {/* Set padding to 0 */}
-            <MovieCard title={movie.title} />
+            <MovieCard
+              image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+              title={movie.title}
+            ></MovieCard>
           </GridItem>
         ))}
       </SimpleGrid>
-    </>
+    </Center>
   );
 };
 

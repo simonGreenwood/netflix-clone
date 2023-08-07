@@ -1,14 +1,16 @@
-import { Card, CardBody, Text } from "@chakra-ui/react";
+import { Card, CardBody, Image, Text } from "@chakra-ui/react";
 
 interface Props {
   title: string;
+  image: string;
 }
 
-const MovieCard = ({ title }: Props) => {
+const MovieCard = ({ title, image }: Props) => {
   return (
-    <Card boxSize={300} padding={0} columnGap={0}>
+    <Card boxSize={250} padding={0} columnGap={0} borderRadius={10}>
+      <Image src={image} borderTopRadius={"10"}></Image>
       <CardBody>
-        <Text>{title}</Text>
+        <Text fontSize={"lg"}>{title}</Text>
       </CardBody>
     </Card>
   );
