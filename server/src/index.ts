@@ -1,15 +1,12 @@
 import express from "express";
-
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { PORT } from "./utils/config";
+import loginRouter from "./routers/loginRouter";
+import userRouter from "./routers/userRouter";
 const app = express();
 
-import { PORT } from "./utils/config";
-
-app.get("/ping", (_req, res) => {
-  res.send("pong");
-});
+app.use(express.json());
+app.use("/api/login", loginRouter);
+app.use("/api/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
