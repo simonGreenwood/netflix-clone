@@ -1,10 +1,7 @@
-// import { useEffect } from "react";
 import "./App.css";
-// import axios from "axios";
 import { Grid, GridItem } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import MovieGrid from "./components/MovieGrid";
-import MovieCardSkeleton from "./components/MovieCardSkeleton";
 
 function App() {
   return (

@@ -1,4 +1,13 @@
-html {
-  padding: 0;
-  margin: 0;
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;1,100&display=swap");
+
+@font-face {
+  font-family: "Netflix Sans";
+  src: local("Netflix Sans"),
+    url("./fonts/NetflixSans-Regular.woff2") format("woff2");
+  font-weight: bold;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Netflix Sans";
 }

@@ -1,5 +1,5 @@
 import { HStack, Image, Link } from "@chakra-ui/react";
-import netflix from "../assets/ntfl.png";
+import netflix from "../../public/ntfl.png";
 import SearchInput from "./SearchInput";
 
 const Navbar = () => {
