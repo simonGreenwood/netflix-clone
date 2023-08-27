@@ -1,7 +1,7 @@
 import express from "express";
 import { PrismaClient, User } from "@prisma/client";
 import bcrypt from "bcrypt";
-
+import "express-async-errors";
 const prisma = new PrismaClient();
 const router = express.Router();
 
@@ -58,7 +58,7 @@ router.delete("/:id", async (req, res) => {
   });
 
   const userWithoutPasswordHash = removePasswordHash(user);
-  return res.json(userWithoutPasswordHash);
+  return res.json(userWithoutPasswordHash).status(204);
 });
 
 export default router;
